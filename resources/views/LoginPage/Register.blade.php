@@ -64,7 +64,7 @@
 
     <div class="card-body p-4">
 
-        <form action="#" method="POST">
+        <form action="{{route('register.store')}}" method="POST">
             @csrf
 
             <div class="mb-3">
