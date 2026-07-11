@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('peminjam', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_peminjam');
+            $table->string('no_identitas')->nullable();
+            $table->string('kontak')->nullable();
+            $table->text('alamat')->nullable();
             $table->timestamps();
         });
     }
@@ -22,6 +26,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('peminjam');
+        Schema::enableForeignKeyConstraints();
     }
 };
