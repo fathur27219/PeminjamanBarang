@@ -9,7 +9,7 @@ class BarangController extends Controller
 {
     public function index()
     {
-        $barang = Barang::all();
-        return view('User.DaftarBarang', compact('barang'));
+        $barangs = Barang::all();
+        return view('User.DaftarBarang', compact('barangs'));
     }
 }

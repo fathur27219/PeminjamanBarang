@@ -11,9 +11,9 @@ Kelola Barang
 <div class="container-fluid">
 
     @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
     @endif
 
     <div class="d-flex justify-content-end mb-3">
@@ -46,7 +46,7 @@ Kelola Barang
 
                 <tbody>
 
-                @forelse($barangs as $item)
+                    @forelse($barangs as $barangs)
 
                     <tr>
 
@@ -65,7 +65,7 @@ Kelola Barang
                         <td>
 
                             <a href="{{ route('admin.barang.edit',$item->id) }}"
-                               class="btn btn-warning btn-sm">
+                                class="btn btn-warning btn-sm">
                                 Edit
                             </a>
 
@@ -91,7 +91,7 @@ Kelola Barang
 
                     </tr>
 
-                @empty
+                    @empty
 
                     <tr>
 
@@ -103,7 +103,7 @@ Kelola Barang
 
                     </tr>
 
-                @endforelse
+                    @endforelse
 
                 </tbody>
 
