@@ -73,13 +73,9 @@
 
         <div class="row align-items-stretch">
 
-<<<<<<< HEAD
             <div class="col-auto p-0 d-flex">
-                @include('Sidebar.Sidebar')
+                @include('Sidebar.SidebarUser')
             </div>
-=======
-            @include('Sidebar.SidebarUser')
->>>>>>> 62e47bbc127e46ccb2756bbdc13b83dee180da2a
 
             <div class="col p-4">
 
