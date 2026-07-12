@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\BarangController;
+use App\Http\Controllers\User\PeminjamanController;;
 
 Route::get('/', function () {
     return view('welcome');
@@ -27,3 +28,9 @@ Route::get('/user/dashboard', [UserDashboardController::class, 'index'])
 // Daftar Barang User
 Route::get('/user/barang', [BarangController::class, 'index'])
     ->name('user.barang.index');
+// Daftar Peminjaman User
+Route::get('/user/peminjaman', [PeminjamanController::class, 'index'])
+    ->name('user.peminjaman.index');
+// Riwayat User
+Route::get('/user/riwayat', [PeminjamanController::class, 'riwayat'])
+    ->name('user.riwayat');
