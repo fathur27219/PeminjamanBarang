@@ -28,9 +28,21 @@ Route::get('/user/dashboard', [UserDashboardController::class, 'index'])
 // Daftar Barang User
 Route::get('/user/barang', [BarangController::class, 'index'])
     ->name('user.barang.index');
-// Daftar Peminjaman User
+
+// CRUD Peminjaman User
 Route::get('/user/peminjaman', [PeminjamanController::class, 'index'])
     ->name('user.peminjaman.index');
+Route::get('/user/peminjaman/create', [PeminjamanController::class, 'create'])
+    ->name('user.peminjaman.create');
+Route::post('/user/peminjaman', [PeminjamanController::class, 'store'])
+    ->name('user.peminjaman.store');
+Route::get('/user/peminjaman/{peminjaman}/edit', [PeminjamanController::class, 'edit'])
+    ->name('user.peminjaman.edit');
+Route::put('/user/peminjaman/{peminjaman}', [PeminjamanController::class, 'update'])
+    ->name('user.peminjaman.update');
+Route::delete('/user/peminjaman/{peminjaman}', [PeminjamanController::class, 'destroy'])
+    ->name('user.peminjaman.destroy');
+
 // Riwayat User
 Route::get('/user/riwayat', [PeminjamanController::class, 'riwayat'])
     ->name('user.riwayat');
