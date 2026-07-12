@@ -10,7 +10,10 @@
         <a href="{{ route('user.peminjaman.index') }}" class="nav-link">📦 Barang Dipinjam</a>
         <a href="{{ route('user.riwayat') }}" class="nav-link">🕒 Riwayat</a>
         <a href="#" class="nav-link">👤 Profil</a>
-        <a href="#" class="nav-link text-danger">🚪 Logout</a>
+        <form action="{{ route('logout') }}" method="post" class="nav-link text-danger">
+            @csrf
+            <button type="submit" class="nav-link text-danger">🚪 Logout</button>
+        </form>
     </nav>
 
 </div>

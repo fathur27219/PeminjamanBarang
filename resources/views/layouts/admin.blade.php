@@ -57,7 +57,7 @@
 
         <div class="row">
 
-            @include('Sidebar.SidebarUser')
+            @include('Sidebar.SidebarAdmin')
 
             <div class="col-md-10 p-4">
 
