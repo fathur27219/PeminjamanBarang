@@ -6,25 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
 
-    <script>
-        try {
-            const collapsed = localStorage.getItem('sidebarCollapsed');
-            document.documentElement.classList.add(collapsed === 'false' ? 'sidebar-expanded' : 'sidebar-collapsed');
-        } catch (e) {
-            // ignore
-        }
-    </script>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
-    html.sidebar-collapsed .sidebar {
-        width: 80px !important;
-    }
-
-    html.sidebar-expanded .sidebar {
-        width: 260px !important;
-    }
         body {
             background: #f5f7fb;
         }
@@ -71,17 +55,11 @@
 
     <div class="container-fluid">
 
-        <div class="row align-items-stretch">
+        <div class="row">
 
-<<<<<<< HEAD
-            <div class="col-auto p-0 d-flex">
-                @include('Sidebar.Sidebar')
-            </div>
-=======
-            @include('Sidebar.SidebarUser')
->>>>>>> 62e47bbc127e46ccb2756bbdc13b83dee180da2a
+            @include('Sidebar.SidebarAdmin')
 
-            <div class="col p-4">
+            <div class="col-md-10 p-4">
 
                 <div class="d-flex justify-content-between align-items-center bg-white p-3 rounded shadow-sm">
 
