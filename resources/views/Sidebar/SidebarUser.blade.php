@@ -6,10 +6,12 @@
         display: flex;
         flex-direction: column;
         background: #172033;
-        transition: width .3s ease, padding .3s ease;
-        overflow: hidden;
+        transition: width 0.35s cubic-bezier(0.22, 1, 0.36, 1), padding 0.35s ease;
+        overflow-x: hidden;
+        overflow-y: auto;
         position: relative;
         min-width: 80px;
+        will-change: width;
     }
 
     .sidebar.collapsed {
@@ -22,27 +24,47 @@
         align-items: center;
         gap: 0.75rem;
         margin-bottom: 1.5rem;
+        transition: gap 0.28s ease;
     }
 
     .sidebar.collapsed .sidebar-top {
         justify-content: center;
+        gap: 0;
     }
 
     .sidebar .logo-text {
         display: inline-block;
         white-space: nowrap;
-        transition: opacity .3s ease, visibility .3s ease, width .3s ease;
+        opacity: 1;
+        visibility: visible;
+        max-width: 180px;
+        overflow: hidden;
+        transform: translateX(0);
+        transition: opacity 0.28s ease, visibility 0.28s ease, max-width 0.28s ease, transform 0.28s ease;
     }
 
     .sidebar.collapsed .logo-text {
         opacity: 0;
         visibility: hidden;
-        width: 0;
+        max-width: 0;
+        transform: translateX(-8px);
+    }
+
+    .sidebar .nav-link span {
+        display: inline-block;
+        opacity: 1;
+        max-width: 180px;
         overflow: hidden;
+        white-space: nowrap;
+        transform: translateX(0);
+        transition: opacity 0.28s ease, max-width 0.28s ease, transform 0.28s ease;
     }
 
     .sidebar.collapsed .nav-link span {
-        display: none;
+        opacity: 0;
+        max-width: 0;
+        transform: translateX(-8px);
+        pointer-events: none;
     }
 
     .sidebar .sidebar-toggle {
@@ -58,7 +80,7 @@
         color: #fff;
         font-size: 1.3rem;
         border-radius: 10px;
-        transition: transform .3s ease, background .3s ease;
+        transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease;
     }
 
     .sidebar .sidebar-toggle:hover {
@@ -74,21 +96,18 @@
         display: flex;
         align-items: center;
         gap: 12px;
-        transition: background .3s ease, color .3s ease, transform .3s ease;
+        transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, padding 0.25s ease;
     }
 
     .sidebar .nav-link:hover {
         background: #25324b;
         color: white;
-        transform: translateX(5px);
+        transform: translateX(4px);
     }
 
     .sidebar.collapsed .nav-link {
         justify-content: center;
-    }
-
-    .sidebar.collapsed .nav-link span {
-        display: none;
+        padding: 12px 0;
     }
 
     .sidebar .nav-link.text-danger {
@@ -155,8 +174,35 @@
         <a href="{{ route('user.barang.index') }}" class="nav-link">📋 <span>Daftar Barang</span></a>
         <a href="{{ route('user.peminjaman.index') }}" class="nav-link">📦 <span>Barang Dipinjam</span></a>
         <a href="{{ route('user.riwayat') }}" class="nav-link">🕒 <span>Riwayat</span></a>
-        <a href="#" class="nav-link">👤 <span>Profil</span></a>
-        <a href="#" class="nav-link text-danger">🚪 <span>Logout</span></a>
+        <a href="{{ route('user.profil') }}" class="nav-link">👤 <span>Profil</span></a>
+        <button
+            type="button"
+            class="nav-link text-danger border-0 bg-transparent w-100 text-start"
+            data-bs-toggle="modal"
+            data-bs-target="#logoutModalUser">
+            🚪 <span>Logout</span>
+        </button>
     </nav>
+
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <div class="modal fade" id="logoutModalUser" tabindex="-1" aria-labelledby="logoutModalUserLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="logoutModalUserLabel">Konfirmasi Logout</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                    </div>
+                    <div class="modal-body">
+                        Anda yakin ingin logout dari akun ini?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-danger">Ya, Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 
 </div>

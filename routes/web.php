@@ -5,7 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
 use App\Http\Controllers\User\BarangController;
-use App\Http\Controllers\User\PeminjamanController;;
+use App\Http\Controllers\User\PeminjamanController;
+use App\Http\Controllers\User\ProfilController;
 use App\Http\Controllers\Admin\BarangController as AdminBarangController;
 
 
@@ -46,6 +47,12 @@ Route::delete('/user/peminjaman/{peminjaman}', [PeminjamanController::class, 'de
 // Riwayat User
 Route::get('/user/riwayat', [PeminjamanController::class, 'riwayat'])
     ->name('user.riwayat');
+
+// Profil User
+Route::get('/user/profil', [ProfilController::class, 'index'])
+    ->name('user.profil');
+Route::put('/user/profil', [ProfilController::class, 'update'])
+    ->name('user.profil.update');
     
 // Kelola Barang Admin
 Route::get('/admin/barang', [AdminBarangController::class, 'index'])
